@@ -1,2 +1,3 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+git attr README.md "Group_1 - Elijah Weddle"
