@@ -7,4 +7,4 @@ The data was collected using a pulley system and car. The testing unit was attac
 
 Newton's 2nd Law of Motion was used to calculated the known acceleration that was compared to the tested value. The mass of the block multiplied by the acceleration of gravity equals the mass of the car and block together multiplied by their shared acceleration. The car and block experience the same acceleration due to the string that ties them together into one system. 
 
-The mass of the string and friction were not included in the calculations. The string mass and the rolling friction between the car's wheels and table as well as the wheels and axel were considerably small and therefore could be neglected. . 
+The mass of the string and friction were not included in the calculations. The string mass and the rolling friction between the car's wheels and table as well as the wheels and axel were considerably small and therefore could be neglected.
