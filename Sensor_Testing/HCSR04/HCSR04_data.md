@@ -1,5 +1,7 @@
 #MPU_Data
-***accuracy data**
+This data is displayed in "HCSR04.pdf" for easier viewing. 
+
+***accuracy data***
 Distance (cm) 
 
 sens.   grd. truth. 
