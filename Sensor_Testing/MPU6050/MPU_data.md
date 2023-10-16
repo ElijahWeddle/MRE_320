@@ -1,3 +1,5 @@
+#MPU6050
+This data is displayed in "MPU6050.pdf" for easier viewing. 
 
 Actual  M1                          Readings                                        Avg.   Std.   Dev.  Avg.Dev.  %error
 0.06​   20​     0.07​   0.13​   0.05​   0.04​   0.14​   0.1​    0.08​   0.08​   0.1​    0.08​   0.09​   0.03​   0.10   0.02​     35.50​
