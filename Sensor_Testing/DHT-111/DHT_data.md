@@ -1,4 +1,5 @@
 #DHT-11 Data 
+This data is displayed in the "DHT-11.pdf" file for easier viewing.
 
 Accuracy: Average deviation of 10 readings = 0.4762 *C
 Precision:  Standard deviation of 10 readings = 0.0514 *C
