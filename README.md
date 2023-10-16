@@ -4,4 +4,4 @@ This is the repository for the SIUE course MRE 320 Sensors and Actuators. The pr
 
 There will be two main projects in this repository: Sensor Testing and Mars Rover
 
-***note*** :there are libraries referenced in the programs that are not in this repository but can be found on Sun Founder 
+***note***: there are libraries referenced in the programs that are not in this repository but can be found on Sun Founder 
