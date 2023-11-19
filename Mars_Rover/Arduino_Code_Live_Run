@@ -1,0 +1,59 @@
+// Practice Run
+#include <SPI.h>
+#include <SD.h>
+#include "DHT.h"
+
+#define DHTPIN 4  // Set the pin connected to the DHT11 data pin
+#define DHTTYPE DHT11 // DHT 11 
+
+DHT dht(DHTPIN, DHTTYPE); 
+File myFile; 
+
+void setup() {
+  Serial.begin(9600);
+  dht.begin();
+  while (!Serial) { 
+    ; }// wait for serial port to connect. Needed for native USB port only
+
+
+  if (!SD.begin(53)) {
+    while (1);
+  }
+  
+  myFile = SD.open("live_run.txt", FILE_WRITE);
+
+  // if the file opened okay, write to it:
+  if (myFile) {
+    myFile.println("DHT11 Readings");
+    // close the file:
+    myFile.close() ; 
+ 
+}
+
+void loop() { // run while loop when servo 5 is hot (learn how) 
+  // Wait a few (2) seconds between measurements.
+  delay(2000);
+  float humidity = dht.readHumidity();
+  float temperature = dht.readTemperature();
+
+  if (isnan(humidity) || isnan(temperature)) {
+    myFile.println("Failed to read from DHT sensor!");
+    return;
+  }
+  // open SD card file 
+  myFile = SD.open("live_run.txt", FILE_WRITE);
+  if (myFile) {
+   
+  // Print the humidity and temperature
+ 
+  myFile.print("Humidity: "); 
+  myFile.print(humidity);
+  myFile.print(" %\t");
+  myFile.print("Temperature: "); 
+  myFile.print(temperature);
+  myFile.println(" *C");
+   } 
+
+  // close the file:
+   myFile.close();
+}
