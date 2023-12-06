@@ -1,0 +1,77 @@
+// Practice Run
+#include <SPI.h>
+#include <SD.h>
+#include "DHT.h"
+
+#define DHTPIN 4  // Set the pin connected to the DHT11 data pin
+#define DHTTYPE DHT11 // DHT 11 
+
+DHT dht(DHTPIN, DHTTYPE); 
+File myFile; 
+
+void setup() {
+  Serial.begin(9600);
+  dht.begin();
+  while (!Serial) { 
+    ; }// wait for serial port to connect. Needed for native USB port only
+
+  Serial.print("Initializing SD card...");
+
+  if (!SD.begin(53)) {
+    Serial.println("initialization failed!");
+    while (1);
+  }
+  Serial.println("initialization done.");
+  myFile = SD.open("live_run.txt", FILE_WRITE);
+
+  // if the file opened okay, write to it:
+  if (myFile) {
+    Serial.print("Writing DHT-11 Readings to live_run.txt...");
+    myFile.println("DHT11 Readings");
+    // close the file:
+    myFile.close() ; 
+  } else {
+    // if the file didn't open, print an error:
+    Serial.println("error opening live_run.txt");
+  }
+}
+
+void loop() { // run while loop when servo 5 is hot (learn how) 
+  // Wait a few (2) seconds between measurements.
+  delay(2000);
+  float humidity = dht.readHumidity();
+  float temperature = dht.readTemperature();
+
+  if (isnan(humidity) || isnan(temperature)) {
+    Serial.println("Failed to read from DHT sensor!");
+    myFile.println("Failed to read from DHT sensor!");
+    return;
+  }
+  // open SD card file 
+  myFile = SD.open("live_run.txt", FILE_WRITE);
+  if (myFile) {
+   
+  // Print the humidity and temperature
+  Serial.print("Humidity: "); 
+  Serial.print(humidity);
+  Serial.print(" %\t");
+  Serial.print("Temperature: "); 
+  Serial.print(temperature);
+  Serial.println(" *C");
+
+  myFile.print("Humidity: "); 
+  myFile.print(humidity);
+  myFile.print(" %\t");
+  myFile.print("Temperature: "); 
+  myFile.print(temperature);
+  myFile.println(" *C");
+   } else {
+    // if the file didn't open, print an error:
+    Serial.println("error opening live_run.txt");
+    myFile.println("error opening live_run.txt") ; 
+  }
+
+  // close the file:
+   myFile.close();
+   Serial.println("done. Successful write.");
+}
